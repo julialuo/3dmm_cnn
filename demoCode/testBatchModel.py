@@ -167,8 +167,9 @@ for image_path in listImgs:
 	## Getting the output
 	features = np.hstack( [net.blobs[layer_name].data[0].flatten()] )
 	## Writing the regressed 3DMM parameters
-	np.savetxt(outFile + '.ply.alpha', features[0:99])
-	np.savetxt(outFile + '.ply.beta', features[99:198])
+        savemat(outFile + '.mat', {'weights': features[99:198]})
+        #np.savetxt(outFile + '.ply.alpha', features[0:99])
+	#np.savetxt(outFile + '.ply.beta', features[99:198])
 	#################################
 	## Mapping back the regressed 3DMM into the original
 	## Basel Face Model (Shape)
